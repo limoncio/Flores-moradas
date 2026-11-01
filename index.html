@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#180f20">
+<meta name="theme-color" content="#190f20">
 <title>Violetas</title>
 
 <style>
@@ -18,16 +18,12 @@ body {
   overflow: hidden;
   display: grid;
   place-items: center;
-  background: radial-gradient(
-    ellipse at 50% 42%,
-    #49304f,
-    #25152e 55%,
-    #110b18 100%
-  );
-  font-family: Georgia, serif;
+  background:
+    radial-gradient(ellipse at 50% 40%, #49304f, #26152f 55%, #110b18);
 }
 
-/* Fondo */
+/* ESTRELLAS */
+
 .stars {
   position: fixed;
   inset: 0;
@@ -37,7 +33,8 @@ body {
     radial-gradient(2px 2px at 80% 15%, #e9d8ff 98%, transparent),
     radial-gradient(2px 2px at 75% 75%, #fff 98%, transparent),
     radial-gradient(2px 2px at 25% 70%, #fff 98%, transparent),
-    radial-gradient(2px 2px at 50% 10%, #fff 98%, transparent);
+    radial-gradient(2px 2px at 50% 10%, #fff 98%, transparent),
+    radial-gradient(2px 2px at 90% 55%, #fff 98%, transparent);
   opacity: .6;
   animation: twinkle 4s infinite alternate;
 }
@@ -45,6 +42,8 @@ body {
 @keyframes twinkle {
   to { opacity: .2; }
 }
+
+/* ESCENA */
 
 main {
   position: relative;
@@ -54,7 +53,6 @@ main {
   place-items: center;
 }
 
-/* Botón inicial */
 .intro {
   position: absolute;
   z-index: 5;
@@ -81,10 +79,11 @@ main {
   }
 }
 
-/* Ramo */
+/* RAMO */
+
 .garden {
-  width: min(96vw, 580px);
   position: absolute;
+  width: min(96vw, 580px);
   opacity: 0;
   transform: translateY(30px) scale(.85);
   transition: 1.5s cubic-bezier(.2,.8,.2,1);
@@ -107,7 +106,8 @@ main {
   transform: translateY(0) scale(1);
 }
 
-/* Tallos */
+/* TALLOS */
+
 .stem {
   fill: none;
   stroke: #78916d;
@@ -125,7 +125,8 @@ main {
   to { stroke-dashoffset: 0; }
 }
 
-/* Hojas */
+/* HOJAS */
+
 .leaf {
   fill: #78916d;
   opacity: 0;
@@ -139,7 +140,8 @@ main {
   to { opacity: 1; }
 }
 
-/* Flores */
+/* FLORES */
+
 .flower {
   opacity: 0;
 }
@@ -153,7 +155,6 @@ main {
   to { opacity: 1; }
 }
 
-/* Pétalos */
 .petal {
   fill: #a77bc9;
   stroke: #dfc2ef;
@@ -165,51 +166,67 @@ main {
 }
 
 .petal.dark {
-  fill: #8152a9;
+  fill: #8052a9;
 }
 
 .center {
   fill: #f5dfaa;
 }
 
-/* Papel del ramo */
+/* PAPEL DE FLORISTERÍA */
+
 .paper {
-  fill: #c5a4d4;
+  fill: #c7a7d5;
   stroke: #ead8f2;
   stroke-width: 2;
+  stroke-linejoin: round;
 }
 
-.paper-light {
+.paper-left {
   fill: #e0c9e9;
+  stroke: #ead8f2;
+  stroke-width: 1.5;
 }
 
-.paper-dark {
+.paper-right {
   fill: #a987bd;
+  stroke: #ead8f2;
+  stroke-width: 1.5;
 }
 
-.paper-line {
+.paper-detail {
   fill: none;
-  stroke: #f0e0f6;
+  stroke: #f5e8fa;
   stroke-width: 2;
   opacity: .8;
+  stroke-linecap: round;
 }
 
-/* Lazo */
+/* LAZO */
+
 .ribbon {
   fill: none;
-  stroke: #f1dafa;
-  stroke-width: 6;
+  stroke: #f5e0fa;
+  stroke-width: 7;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-.ribbon-center {
-  fill: #f3dafa;
-  stroke: #c49bd5;
-  stroke-width: 1.5;
+.ribbon-shadow {
+  fill: none;
+  stroke: #a982bc;
+  stroke-width: 2;
+  opacity: .6;
 }
 
-/* Flores flotantes */
+.ribbon-center {
+  fill: #f5e0fa;
+  stroke: #b990ca;
+  stroke-width: 2;
+}
+
+/* PÉTALOS FLOTANTES */
+
 .falling {
   position: fixed;
   inset: 0;
@@ -282,14 +299,16 @@ main {
 
 <main id="scene">
 
-  <!-- Sorpresa inicial -->
+  <!-- SORPRESA INICIAL -->
+
   <div class="intro">
-    <button class="seal" id="reveal" aria-label="Descubrir el ramo">
+    <button class="seal" id="reveal" aria-label="Descubrir">
       ✿
     </button>
   </div>
 
-  <!-- Ramo de violetas -->
+  <!-- RAMO -->
+
   <div class="garden">
 
     <svg viewBox="0 0 500 570"
@@ -300,37 +319,44 @@ main {
       <defs>
         <g id="violet">
           <ellipse class="petal light"
-                   cx="0" cy="-17" rx="10" ry="17"/>
+            cx="0" cy="-17" rx="10" ry="17"/>
+
           <ellipse class="petal"
-                   cx="16" cy="-5" rx="10" ry="17"
-                   transform="rotate(72 16 -5)"/>
+            cx="16" cy="-5" rx="10" ry="17"
+            transform="rotate(72 16 -5)"/>
+
           <ellipse class="petal dark"
-                   cx="10" cy="14" rx="10" ry="17"
-                   transform="rotate(144 10 14)"/>
+            cx="10" cy="14" rx="10" ry="17"
+            transform="rotate(144 10 14)"/>
+
           <ellipse class="petal light"
-                   cx="-10" cy="14" rx="10" ry="17"
-                   transform="rotate(216 -10 14)"/>
+            cx="-10" cy="14" rx="10" ry="17"
+            transform="rotate(216 -10 14)"/>
+
           <ellipse class="petal"
-                   cx="-16" cy="-5" rx="10" ry="17"
-                   transform="rotate(288 -16 -5)"/>
+            cx="-16" cy="-5" rx="10" ry="17"
+            transform="rotate(288 -16 -5)"/>
+
           <circle class="center" r="4"/>
         </g>
       </defs>
 
-      <!-- TALLOS -->
+      <!-- TALLOS QUE SE UNEN -->
+
       <g>
-        <path class="stem" d="M250 455 Q175 300 85 125"/>
-        <path class="stem" d="M250 455 Q195 290 145 85"/>
-        <path class="stem" d="M250 455 Q225 270 215 65"/>
-        <path class="stem" d="M250 455 Q280 275 285 90"/>
-        <path class="stem" d="M250 455 Q325 310 385 140"/>
-        <path class="stem" d="M250 455 Q165 350 65 220"/>
-        <path class="stem" d="M250 455 Q335 350 435 220"/>
-        <path class="stem" d="M250 455 Q205 350 140 210"/>
-        <path class="stem" d="M250 455 Q300 350 360 210"/>
+        <path class="stem" d="M250 445 Q175 300 85 125"/>
+        <path class="stem" d="M250 445 Q195 290 145 85"/>
+        <path class="stem" d="M250 445 Q225 270 215 65"/>
+        <path class="stem" d="M250 445 Q280 275 285 90"/>
+        <path class="stem" d="M250 445 Q325 310 385 140"/>
+        <path class="stem" d="M250 445 Q165 350 65 220"/>
+        <path class="stem" d="M250 445 Q335 350 435 220"/>
+        <path class="stem" d="M250 445 Q205 350 140 210"/>
+        <path class="stem" d="M250 445 Q300 350 360 210"/>
       </g>
 
       <!-- HOJAS -->
+
       <g>
         <path class="leaf" style="animation-delay:.8s"
           d="M180 340 Q110 295 120 260 Q170 275 180 340Z"/>
@@ -351,80 +377,80 @@ main {
           d="M310 270 Q345 235 340 205 Q300 225 310 270Z"/>
       </g>
 
-      <!-- PAPEL DEL RAMO -->
+      <!-- PAPEL PRINCIPAL: CONO DE FLORISTERÍA -->
+
       <g>
 
-        <!-- Papel exterior -->
+        <!-- Silueta exterior: ancho arriba, estrecho abajo -->
         <path class="paper"
-          d="M105 300
-             Q175 325 250 330
-             Q325 325 395 300
-             L315 480
-             Q280 510 250 520
-             Q220 510 185 480
+          d="M100 300
+             Q250 355 400 300
+             L285 465
+             Q250 505 215 465
              Z"/>
 
-        <!-- Pliegue izquierdo -->
-        <path class="paper-light"
-          d="M105 300
-             Q145 355 195 470
-             L185 480
-             Z"/>
+        <!-- Ala izquierda -->
+        <path class="paper-left"
+          d="M100 300
+             Q145 350 215 465
+             L198 445
+             Q145 360 100 300Z"/>
 
-        <!-- Pliegue derecho -->
-        <path class="paper-dark"
-          d="M395 300
-             Q355 355 305 470
-             L315 480
-             Z"/>
+        <!-- Ala derecha -->
+        <path class="paper-right"
+          d="M400 300
+             Q355 350 285 465
+             L302 445
+             Q355 360 400 300Z"/>
 
-        <!-- Borde superior -->
-        <path class="paper-line"
-          d="M105 300 Q250 360 395 300"/>
+        <!-- Puntas del papel -->
+        <path class="paper-detail"
+          d="M100 300 Q250 355 400 300"/>
 
-        <!-- Pliegues decorativos -->
-        <path class="paper-line"
-          d="M145 340 Q180 385 205 465"/>
+        <path class="paper-detail"
+          d="M145 350 Q180 400 215 465"/>
 
-        <path class="paper-line"
-          d="M355 340 Q320 385 295 465"/>
+        <path class="paper-detail"
+          d="M355 350 Q320 400 285 465"/>
 
-        <path class="paper-line"
-          d="M190 490 Q250 520 310 490"/>
+        <path class="paper-detail"
+          d="M225 475 Q250 490 275 475"/>
 
-        <!-- Cinta que recoge el ramo -->
-        <path d="M192 415 Q250 435 308 415"
+        <!-- Banda de satén -->
+        <path d="M202 410 Q250 430 298 410"
           fill="none"
-          stroke="#f2d9fa"
+          stroke="#f6e5fa"
           stroke-width="10"
           stroke-linecap="round"/>
 
         <!-- Lazo izquierdo -->
+        <path class="ribbon-shadow"
+          d="M250 425 Q205 380 178 407 Q165 438 246 432"/>
+
         <path class="ribbon"
-          d="M250 425
-             Q210 390 180 410
-             Q165 440 245 433"/>
+          d="M250 425 Q205 380 178 407 Q165 438 246 432"/>
 
         <!-- Lazo derecho -->
+        <path class="ribbon-shadow"
+          d="M250 425 Q295 380 322 407 Q335 438 254 432"/>
+
         <path class="ribbon"
-          d="M250 425
-             Q290 390 320 410
-             Q335 440 255 433"/>
+          d="M250 425 Q295 380 322 407 Q335 438 254 432"/>
 
         <!-- Colas del lazo -->
         <path class="ribbon"
-          d="M245 433 Q220 475 205 465"/>
+          d="M246 432 Q220 470 202 458"/>
 
         <path class="ribbon"
-          d="M255 433 Q280 475 295 465"/>
+          d="M254 432 Q280 470 298 458"/>
 
-        <!-- Centro -->
+        <!-- Centro del lazo -->
         <circle class="ribbon-center"
-          cx="250" cy="430" r="9"/>
+          cx="250" cy="428" r="10"/>
 
       </g>
 
-      <!-- NUEVE VIOLETAS -->
+      <!-- NUEVE FLORES -->
 
       <g class="flower"
          style="animation-delay:1s"
@@ -481,9 +507,11 @@ main {
       </g>
 
     </svg>
+
   </div>
 
-  <!-- Pétalos flotantes -->
+  <!-- PÉTALOS FLOTANTES -->
+
   <div class="falling" aria-hidden="true">
     <span>✿</span>
     <span>✿</span>
