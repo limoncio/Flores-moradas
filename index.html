@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#160f20">
+<title>Violetas</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;overflow:hidden;
+ display:grid;place-items:center;
+ background:radial-gradient(ellipse at 50% 40%,#493052 0%,#24162f 45%,#100b18 100%);
+ font-family:Georgia,serif;color:#fff;
+}
+.stars{
+ position:fixed;inset:0;pointer-events:none;
+ background-image:radial-gradient(1px 1px at 15% 20%,#fff 98%,transparent),radial-gradient(1px 1px at 80% 15%,#e9d8ff 98%,transparent),radial-gradient(1px 1px at 75% 75%,#fff 98%,transparent),radial-gradient(1px 1px at 25% 70%,#fff 98%,transparent),radial-gradient(1px 1px at 50% 10%,#fff 98%,transparent);
+ opacity:.65;animation:twinkle 4s infinite alternate;
+}
+@keyframes twinkle{to{opacity:.2}}
+main{position:relative;width:100%;height:100vh;display:grid;place-items:center}
+.intro{position:absolute;z-index:3;transition:1s}
+.seal{
+ width:85px;height:85px;border-radius:50%;
+ border:1px solid #d9b9e8;background:#ffffff0b;
+ color:#e7c9f5;font-size:35px;cursor:pointer;
+ box-shadow:0 0 35px #bd8ede55;
+ animation:pulse 2.5s infinite;
+}
+@keyframes pulse{50%{transform:scale(1.09);box-shadow:0 0 55px #bd8ede88}}
+.garden{
+ position:absolute;width:min(95vw,520px);
+ opacity:0;transform:translateY(25px) scale(.9);
+ transition:1.5s cubic-bezier(.2,.8,.2,1);
+}
+.garden svg{width:100%;height:auto}
+.opened .intro{opacity:0;transform:scale(.5);pointer-events:none}
+.opened .garden{opacity:1;transform:translateY(0) scale(1)}
+.stem{fill:none;stroke:#78916d;stroke-width:4;stroke-linecap:round;stroke-dasharray:300;stroke-dashoffset:300}
+.opened .stem{animation:grow 2s ease forwards}
+@keyframes grow{to{stroke-dashoffset:0}}
+.leaf{fill:#718d70;opacity:0;transform-box:fill-box;transform-origin:center}
+.opened .leaf{animation:leaf 1s forwards}
+@keyframes leaf{to{opacity:1}}
+.flower{opacity:0;transform:scale(0);transform-box:fill-box;transform-origin:center}
+.opened .flower{animation:bloom .9s cubic-bezier(.2,.8,.3,1.3) forwards}
+@keyframes bloom{to{opacity:1;transform:scale(1)}}
+.petal{fill:#a77bc9;stroke:#d9b8ed;stroke-width:1.3}
+.petal.light{fill:#c49cdd}
+.petal.dark{fill:#8054a8}
+.center{fill:#f2d9a5}
+.wrap{fill:#c6a8d4;stroke:#e9d8ef;stroke-width:1.5}
+.ribbon{fill:none;stroke:#e9d5ef;stroke-width:4;stroke-linecap:round}
+.falling{position:fixed;inset:0;pointer-events:none}
+.falling span{position:absolute;bottom:-20px;color:#bd91d6;opacity:0}
+.opened .falling span{animation:fall 9s linear infinite}
+.falling span:nth-child(1){left:10%;animation-delay:0s}
+.falling span:nth-child(2){left:28%;animation-delay:2s}
+.falling span:nth-child(3){left:78%;animation-delay:1s}
+.falling span:nth-child(4){left:90%;animation-delay:3s}
+.falling span:nth-child(5){left:55%;animation-delay:4s}
+@keyframes fall{10%{opacity:.8}100%{transform:translateY(-110vh) rotate(300deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<main id="scene">
+ <div class="intro">
+  <button class="seal" id="reveal" aria-label="Descubrir">✿</button>
+ </div>
+ <div class="garden">
+  <svg viewBox="0 0 420 520" role="img" aria-label="Ramo de violetas">
+   <defs>
+    <g id="violet">
+     <ellipse class="petal light" cy="-17" rx="10" ry="17"/>
+     <ellipse class="petal" cx="16" cy="-5" rx="10" ry="17" transform="rotate(72 16 -5)"/>
+     <ellipse class="petal dark" cx="10" cy="14" rx="10" ry="17" transform="rotate(144 10 14)"/>
+     <ellipse class="petal light" cx="-10" cy="14" rx="10" ry="17" transform="rotate(216 -10 14)"/>
+     <ellipse class="petal" cx="-16" cy="-5" rx="10" ry="17" transform="rotate(288 -16 -5)"/>
+     <circle class="center" r="4"/>
+    </g>
+   </defs>
+   <path class="stem" d="M210 405 Q185 300 92 125"/>
+   <path class="stem" d="M210 405 Q190 280 150 92"/>
+   <path class="stem" d="M210 405 Q205 265 205 72"/>
+   <path class="stem" d="M210 405 Q235 265 260 91"/>
+   <path class="stem" d="M210 405 Q260 300 325 132"/>
+   <path class="stem" d="M210 405 Q160 320 66 205"/>
+   <path class="stem" d="M210 405 Q275 320 354 205"/>
+   <path class="stem" d="M210 405 Q205 330 125 205"/>
+   <path class="stem" d="M210 405 Q220 330 294 205"/>
+   <path class="leaf" d="M166 300 Q105 270 111 229 Q159 237 166 300Z"/>
+   <path class="leaf" d="M235 322 Q293 283 300 246 Q252 251 235 322Z"/>
+   <path class="leaf" d="M181 355 Q126 332 119 300 Q163 299 181 355Z"/>
+   <path class="leaf" d="M246 365 Q298 337 311 304 Q268 306 246 365Z"/>
+   <path class="leaf" d="M190 265 Q157 237 160 211 Q193 225 190 265Z"/>
+   <path class="leaf" d="M252 273 Q282 241 277 214 Q247 232 252 273Z"/>
+   <path class="wrap" d="M91 294 Q205 330 329 294 L275 455 Q210 490 145 455Z"/>
+   <path class="wrap" d="M91 294 Q210 353 329 294 L299 355 Q207 389 119 355Z" opacity=".7"/>
+   <path class="ribbon" d="M153 393 Q210 420 267 393 M210 410 Q177 444 162 423 M210 410 Q243 444 258 423"/>
+   <g class="flower" style="animation-delay:1.2s" transform="translate(92 125) scale(1.05)"><use href="#violet"/></g>
+   <g class="flower" style="animation-delay:1.45s" transform="translate(150 92) scale(.9)"><use href="#violet"/></g>
+   <g class="flower" style="animation-delay:1.7s" transform="translate(205 72) scale(1.12)"><use href="#violet"/></g>
+   <g class="flower" style="animation-delay:1.95s" transform="translate(260 91) scale(.98)"><use href="#violet"/></g>
+   <g class="flower" style="animation-delay:2.2s" transform="translate(325 132) scale(1.05)"><use href="#violet"/></g>
+   <g class="flower" style="animation-delay:2.45s" transform="translate(66 205) scale(.82)"><use href="#violet"/></g>
+   <g class="flower" style="animation-delay:2.7s" transform="translate(354 205) scale(.82)"><use href="#violet"/></g>
+   <g class="flower" style="animation-delay:2.95s" transform="translate(125 205) scale(.88)"><use href="#violet"/></g>
+   <g class="flower" style="animation-delay:3.2s" transform="translate(294 205) scale(.9)"><use href="#violet"/></g>
+  </svg>
+ </div>
+ <div class="falling" aria-hidden="true">
+  <span>✿</span><span>✿</span><span>✿</span><span>✿</span><span>✿</span>
+ </div>
+</main>
+<script>
+document.getElementById('reveal').addEventListener('click',()=>{
+ document.getElementById('scene').classList.add('opened');
+},{once:true});
+</script>
+</body>
+</html>
