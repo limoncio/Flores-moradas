@@ -4,207 +4,274 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#160f20">
+<meta name="theme-color" content="#180f20">
 <title>Violetas</title>
 
 <style>
-*{box-sizing:border-box}
-
-body{
- margin:0;
- min-height:100vh;
- overflow:hidden;
- display:grid;
- place-items:center;
- background:
- radial-gradient(ellipse at 50% 40%,#493052 0%,#24162f 45%,#100b18 100%);
- font-family:Georgia,serif;
+* {
+  box-sizing: border-box;
 }
 
-.stars{
- position:fixed;
- inset:0;
- pointer-events:none;
- background-image:
- radial-gradient(1px 1px at 15% 20%,#fff 98%,transparent),
- radial-gradient(1px 1px at 80% 15%,#e9d8ff 98%,transparent),
- radial-gradient(1px 1px at 75% 75%,#fff 98%,transparent),
- radial-gradient(1px 1px at 25% 70%,#fff 98%,transparent),
- radial-gradient(1px 1px at 50% 10%,#fff 98%,transparent);
- opacity:.65;
- animation:twinkle 4s infinite alternate;
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(
+    ellipse at 50% 42%,
+    #49304f,
+    #25152e 55%,
+    #110b18 100%
+  );
+  font-family: Georgia, serif;
 }
 
-@keyframes twinkle{
- to{opacity:.2}
+/* Fondo */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 15% 20%, #fff 98%, transparent),
+    radial-gradient(2px 2px at 80% 15%, #e9d8ff 98%, transparent),
+    radial-gradient(2px 2px at 75% 75%, #fff 98%, transparent),
+    radial-gradient(2px 2px at 25% 70%, #fff 98%, transparent),
+    radial-gradient(2px 2px at 50% 10%, #fff 98%, transparent);
+  opacity: .6;
+  animation: twinkle 4s infinite alternate;
 }
 
-main{
- position:relative;
- width:100%;
- height:100vh;
- display:grid;
- place-items:center;
+@keyframes twinkle {
+  to { opacity: .2; }
 }
 
-.intro{
- position:absolute;
- z-index:3;
- transition:1s;
+main {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  place-items: center;
 }
 
-.seal{
- width:85px;
- height:85px;
- border-radius:50%;
- border:1px solid #d9b9e8;
- background:#ffffff0b;
- color:#e7c9f5;
- font-size:35px;
- cursor:pointer;
- box-shadow:0 0 35px #bd8ede55;
- animation:pulse 2.5s infinite;
+/* Botón inicial */
+.intro {
+  position: absolute;
+  z-index: 5;
+  transition: 1s;
 }
 
-@keyframes pulse{
- 50%{
-  transform:scale(1.09);
-  box-shadow:0 0 55px #bd8ede88;
- }
+.seal {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 1px solid #d9b9e8;
+  background: #ffffff0b;
+  color: #e7c9f5;
+  font-size: 38px;
+  cursor: pointer;
+  box-shadow: 0 0 35px #bd8ede55;
+  animation: pulse 2.5s infinite;
 }
 
-.garden{
- position:absolute;
- width:min(95vw,520px);
- opacity:0;
- transform:translateY(25px) scale(.9);
- transition:1.5s cubic-bezier(.2,.8,.2,1);
+@keyframes pulse {
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 55px #bd8ede88;
+  }
 }
 
-.garden svg{
- width:100%;
- height:auto;
+/* Ramo */
+.garden {
+  width: min(96vw, 580px);
+  position: absolute;
+  opacity: 0;
+  transform: translateY(30px) scale(.85);
+  transition: 1.5s cubic-bezier(.2,.8,.2,1);
 }
 
-.opened .intro{
- opacity:0;
- transform:scale(.5);
- pointer-events:none;
+.garden svg {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.opened .garden{
- opacity:1;
- transform:translateY(0) scale(1);
+.opened .intro {
+  opacity: 0;
+  transform: scale(.4);
+  pointer-events: none;
+}
+
+.opened .garden {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 /* Tallos */
-.stem{
- fill:none;
- stroke:#78916d;
- stroke-width:4;
- stroke-linecap:round;
- stroke-dasharray:300;
- stroke-dashoffset:300;
+.stem {
+  fill: none;
+  stroke: #78916d;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
 }
 
-.opened .stem{
- animation:grow 2s ease forwards;
+.opened .stem {
+  animation: grow 2s ease forwards;
 }
 
-@keyframes grow{
- to{stroke-dashoffset:0}
+@keyframes grow {
+  to { stroke-dashoffset: 0; }
 }
 
 /* Hojas */
-.leaf{
- fill:#718d70;
- opacity:0;
+.leaf {
+  fill: #78916d;
+  opacity: 0;
 }
 
-.opened .leaf{
- animation:leaf 1s ease forwards;
+.opened .leaf {
+  animation: leaf 1s ease forwards;
 }
 
-@keyframes leaf{
- to{opacity:1}
+@keyframes leaf {
+  to { opacity: 1; }
 }
 
 /* Flores */
-.flower{
- opacity:0;
+.flower {
+  opacity: 0;
 }
 
-.opened .flower{
- animation:bloom 1s ease forwards;
+.opened .flower {
+  animation: bloom 1s ease forwards;
 }
 
-@keyframes bloom{
- from{opacity:0}
- to{opacity:1}
+@keyframes bloom {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* Pétalos */
-.petal{
- fill:#a77bc9;
- stroke:#d9b8ed;
- stroke-width:1.3;
+.petal {
+  fill: #a77bc9;
+  stroke: #dfc2ef;
+  stroke-width: 1.4;
 }
 
-.light{fill:#c49cdd}
-.dark{fill:#8054a8}
-.center{fill:#f2d9a5}
-
-/* Envoltorio */
-.wrap{
- fill:#c6a8d4;
- stroke:#e9d8ef;
- stroke-width:1.5;
+.petal.light {
+  fill: #c69bdd;
 }
 
-.ribbon{
- fill:none;
- stroke:#e9d5ef;
- stroke-width:4;
- stroke-linecap:round;
+.petal.dark {
+  fill: #8152a9;
 }
 
-/* Violetas flotantes */
-.falling{
- position:fixed;
- inset:0;
- pointer-events:none;
+.center {
+  fill: #f5dfaa;
 }
 
-.falling span{
- position:absolute;
- bottom:-20px;
- color:#bd91d6;
- opacity:0;
+/* Papel del ramo */
+.paper {
+  fill: #c5a4d4;
+  stroke: #ead8f2;
+  stroke-width: 2;
 }
 
-.opened .falling span{
- animation:fall 9s linear infinite;
+.paper-light {
+  fill: #e0c9e9;
 }
 
-.falling span:nth-child(1){left:10%;animation-delay:0s}
-.falling span:nth-child(2){left:28%;animation-delay:2s}
-.falling span:nth-child(3){left:78%;animation-delay:1s}
-.falling span:nth-child(4){left:90%;animation-delay:3s}
-.falling span:nth-child(5){left:55%;animation-delay:4s}
-
-@keyframes fall{
- 10%{opacity:.8}
- 100%{
-  transform:translateY(-110vh) rotate(300deg);
-  opacity:0;
- }
+.paper-dark {
+  fill: #a987bd;
 }
 
-@media(prefers-reduced-motion:reduce){
- *,*::before,*::after{
-  animation-duration:.01ms!important;
-  transition-duration:.01ms!important;
- }
+.paper-line {
+  fill: none;
+  stroke: #f0e0f6;
+  stroke-width: 2;
+  opacity: .8;
+}
+
+/* Lazo */
+.ribbon {
+  fill: none;
+  stroke: #f1dafa;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ribbon-center {
+  fill: #f3dafa;
+  stroke: #c49bd5;
+  stroke-width: 1.5;
+}
+
+/* Flores flotantes */
+.falling {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.falling span {
+  position: absolute;
+  bottom: -30px;
+  color: #c49cdd;
+  opacity: 0;
+  font-size: 19px;
+}
+
+.opened .falling span {
+  animation: fall 10s linear infinite;
+}
+
+.falling span:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.falling span:nth-child(2) {
+  left: 30%;
+  animation-delay: 2s;
+}
+
+.falling span:nth-child(3) {
+  left: 75%;
+  animation-delay: 1s;
+}
+
+.falling span:nth-child(4) {
+  left: 90%;
+  animation-delay: 3s;
+}
+
+.falling span:nth-child(5) {
+  left: 55%;
+  animation-delay: 4s;
+}
+
+@keyframes fall {
+  10% { opacity: .8; }
+  100% {
+    transform: translateY(-110vh) rotate(300deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .garden {
+    width: 100vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
 }
 </style>
 </head>
@@ -215,175 +282,222 @@ main{
 
 <main id="scene">
 
- <div class="intro">
-  <button class="seal" id="reveal" aria-label="Descubrir">
-   ✿
-  </button>
- </div>
+  <!-- Sorpresa inicial -->
+  <div class="intro">
+    <button class="seal" id="reveal" aria-label="Descubrir el ramo">
+      ✿
+    </button>
+  </div>
 
- <div class="garden">
+  <!-- Ramo de violetas -->
+  <div class="garden">
 
- <svg viewBox="0 0 420 520" role="img" aria-label="Ramo de violetas">
+    <svg viewBox="0 0 500 570"
+         xmlns="http://www.w3.org/2000/svg"
+         role="img"
+         aria-label="Ramo de nueve violetas">
 
- <!-- Tallos -->
- <path class="stem" d="M210 405 Q185 300 92 125"/>
- <path class="stem" d="M210 405 Q190 280 150 92"/>
- <path class="stem" d="M210 405 Q205 265 205 72"/>
- <path class="stem" d="M210 405 Q235 265 260 91"/>
- <path class="stem" d="M210 405 Q260 300 325 132"/>
- <path class="stem" d="M210 405 Q160 320 66 205"/>
- <path class="stem" d="M210 405 Q275 320 354 205"/>
- <path class="stem" d="M210 405 Q205 330 125 205"/>
- <path class="stem" d="M210 405 Q220 330 294 205"/>
+      <defs>
+        <g id="violet">
+          <ellipse class="petal light"
+                   cx="0" cy="-17" rx="10" ry="17"/>
+          <ellipse class="petal"
+                   cx="16" cy="-5" rx="10" ry="17"
+                   transform="rotate(72 16 -5)"/>
+          <ellipse class="petal dark"
+                   cx="10" cy="14" rx="10" ry="17"
+                   transform="rotate(144 10 14)"/>
+          <ellipse class="petal light"
+                   cx="-10" cy="14" rx="10" ry="17"
+                   transform="rotate(216 -10 14)"/>
+          <ellipse class="petal"
+                   cx="-16" cy="-5" rx="10" ry="17"
+                   transform="rotate(288 -16 -5)"/>
+          <circle class="center" r="4"/>
+        </g>
+      </defs>
 
- <!-- Hojas -->
- <path class="leaf" style="animation-delay:.8s"
- d="M166 300 Q105 270 111 229 Q159 237 166 300Z"/>
+      <!-- TALLOS -->
+      <g>
+        <path class="stem" d="M250 455 Q175 300 85 125"/>
+        <path class="stem" d="M250 455 Q195 290 145 85"/>
+        <path class="stem" d="M250 455 Q225 270 215 65"/>
+        <path class="stem" d="M250 455 Q280 275 285 90"/>
+        <path class="stem" d="M250 455 Q325 310 385 140"/>
+        <path class="stem" d="M250 455 Q165 350 65 220"/>
+        <path class="stem" d="M250 455 Q335 350 435 220"/>
+        <path class="stem" d="M250 455 Q205 350 140 210"/>
+        <path class="stem" d="M250 455 Q300 350 360 210"/>
+      </g>
 
- <path class="leaf" style="animation-delay:1s"
- d="M235 322 Q293 283 300 246 Q252 251 235 322Z"/>
+      <!-- HOJAS -->
+      <g>
+        <path class="leaf" style="animation-delay:.8s"
+          d="M180 340 Q110 295 120 260 Q170 275 180 340Z"/>
 
- <path class="leaf" style="animation-delay:1.2s"
- d="M181 355 Q126 332 119 300 Q163 299 181 355Z"/>
+        <path class="leaf" style="animation-delay:1s"
+          d="M320 340 Q390 290 385 255 Q330 275 320 340Z"/>
 
- <path class="leaf" style="animation-delay:1.4s"
- d="M246 365 Q298 337 311 304 Q268 306 246 365Z"/>
+        <path class="leaf" style="animation-delay:1.2s"
+          d="M210 390 Q145 365 135 325 Q185 330 210 390Z"/>
 
- <path class="leaf" style="animation-delay:1.6s"
- d="M190 265 Q157 237 160 211 Q193 225 190 265Z"/>
+        <path class="leaf" style="animation-delay:1.4s"
+          d="M290 390 Q355 365 370 325 Q320 330 290 390Z"/>
 
- <path class="leaf" style="animation-delay:1.8s"
- d="M252 273 Q282 241 277 214 Q247 232 252 273Z"/>
+        <path class="leaf" style="animation-delay:1.6s"
+          d="M190 270 Q155 235 160 205 Q200 225 190 270Z"/>
 
- <!-- Envoltorio -->
- <path class="wrap"
- d="M91 294 Q205 330 329 294 L275 455 Q210 490 145 455Z"/>
+        <path class="leaf" style="animation-delay:1.8s"
+          d="M310 270 Q345 235 340 205 Q300 225 310 270Z"/>
+      </g>
 
- <path class="wrap"
- d="M91 294 Q210 353 329 294 L299 355 Q207 389 119 355Z"
- opacity=".7"/>
+      <!-- PAPEL DEL RAMO -->
+      <g>
 
- <path class="ribbon"
- d="M153 393 Q210 420 267 393
- M210 410 Q177 444 162 423
- M210 410 Q243 444 258 423"/>
+        <!-- Papel exterior -->
+        <path class="paper"
+          d="M105 300
+             Q175 325 250 330
+             Q325 325 395 300
+             L315 480
+             Q280 510 250 520
+             Q220 510 185 480
+             Z"/>
 
- <!-- Flor 1 -->
- <g class="flower" style="animation-delay:1s"
- transform="translate(92 125) scale(1.05)">
-  <ellipse class="petal light" cy="-17" rx="10" ry="17"/>
-  <ellipse class="petal" cx="16" cy="-5" rx="10" ry="17"/>
-  <ellipse class="petal dark" cx="10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal light" cx="-10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal" cx="-16" cy="-5" rx="10" ry="17"/>
-  <circle class="center" r="4"/>
- </g>
+        <!-- Pliegue izquierdo -->
+        <path class="paper-light"
+          d="M105 300
+             Q145 355 195 470
+             L185 480
+             Z"/>
 
- <!-- Flor 2 -->
- <g class="flower" style="animation-delay:1.3s"
- transform="translate(150 92) scale(.9)">
-  <ellipse class="petal light" cy="-17" rx="10" ry="17"/>
-  <ellipse class="petal" cx="16" cy="-5" rx="10" ry="17"/>
-  <ellipse class="petal dark" cx="10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal light" cx="-10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal" cx="-16" cy="-5" rx="10" ry="17"/>
-  <circle class="center" r="4"/>
- </g>
+        <!-- Pliegue derecho -->
+        <path class="paper-dark"
+          d="M395 300
+             Q355 355 305 470
+             L315 480
+             Z"/>
 
- <!-- Flor 3 -->
- <g class="flower" style="animation-delay:1.6s"
- transform="translate(205 72) scale(1.12)">
-  <ellipse class="petal light" cy="-17" rx="10" ry="17"/>
-  <ellipse class="petal" cx="16" cy="-5" rx="10" ry="17"/>
-  <ellipse class="petal dark" cx="10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal light" cx="-10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal" cx="-16" cy="-5" rx="10" ry="17"/>
-  <circle class="center" r="4"/>
- </g>
+        <!-- Borde superior -->
+        <path class="paper-line"
+          d="M105 300 Q250 360 395 300"/>
 
- <!-- Flor 4 -->
- <g class="flower" style="animation-delay:1.9s"
- transform="translate(260 91) scale(.98)">
-  <ellipse class="petal light" cy="-17" rx="10" ry="17"/>
-  <ellipse class="petal" cx="16" cy="-5" rx="10" ry="17"/>
-  <ellipse class="petal dark" cx="10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal light" cx="-10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal" cx="-16" cy="-5" rx="10" ry="17"/>
-  <circle class="center" r="4"/>
- </g>
+        <!-- Pliegues decorativos -->
+        <path class="paper-line"
+          d="M145 340 Q180 385 205 465"/>
 
- <!-- Flor 5 -->
- <g class="flower" style="animation-delay:2.2s"
- transform="translate(325 132) scale(1.05)">
-  <ellipse class="petal light" cy="-17" rx="10" ry="17"/>
-  <ellipse class="petal" cx="16" cy="-5" rx="10" ry="17"/>
-  <ellipse class="petal dark" cx="10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal light" cx="-10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal" cx="-16" cy="-5" rx="10" ry="17"/>
-  <circle class="center" r="4"/>
- </g>
+        <path class="paper-line"
+          d="M355 340 Q320 385 295 465"/>
 
- <!-- Flor 6 -->
- <g class="flower" style="animation-delay:2.5s"
- transform="translate(66 205) scale(.82)">
-  <ellipse class="petal light" cy="-17" rx="10" ry="17"/>
-  <ellipse class="petal" cx="16" cy="-5" rx="10" ry="17"/>
-  <ellipse class="petal dark" cx="10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal light" cx="-10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal" cx="-16" cy="-5" rx="10" ry="17"/>
-  <circle class="center" r="4"/>
- </g>
+        <path class="paper-line"
+          d="M190 490 Q250 520 310 490"/>
 
- <!-- Flor 7 -->
- <g class="flower" style="animation-delay:2.8s"
- transform="translate(354 205) scale(.82)">
-  <ellipse class="petal light" cy="-17" rx="10" ry="17"/>
-  <ellipse class="petal" cx="16" cy="-5" rx="10" ry="17"/>
-  <ellipse class="petal dark" cx="10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal light" cx="-10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal" cx="-16" cy="-5" rx="10" ry="17"/>
-  <circle class="center" r="4"/>
- </g>
+        <!-- Cinta que recoge el ramo -->
+        <path d="M192 415 Q250 435 308 415"
+          fill="none"
+          stroke="#f2d9fa"
+          stroke-width="10"
+          stroke-linecap="round"/>
 
- <!-- Flor 8 -->
- <g class="flower" style="animation-delay:3.1s"
- transform="translate(125 205) scale(.88)">
-  <ellipse class="petal light" cy="-17" rx="10" ry="17"/>
-  <ellipse class="petal" cx="16" cy="-5" rx="10" ry="17"/>
-  <ellipse class="petal dark" cx="10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal light" cx="-10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal" cx="-16" cy="-5" rx="10" ry="17"/>
-  <circle class="center" r="4"/>
- </g>
+        <!-- Lazo izquierdo -->
+        <path class="ribbon"
+          d="M250 425
+             Q210 390 180 410
+             Q165 440 245 433"/>
 
- <!-- Flor 9 -->
- <g class="flower" style="animation-delay:3.4s"
- transform="translate(294 205) scale(.9)">
-  <ellipse class="petal light" cy="-17" rx="10" ry="17"/>
-  <ellipse class="petal" cx="16" cy="-5" rx="10" ry="17"/>
-  <ellipse class="petal dark" cx="10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal light" cx="-10" cy="14" rx="10" ry="17"/>
-  <ellipse class="petal" cx="-16" cy="-5" rx="10" ry="17"/>
-  <circle class="center" r="4"/>
- </g>
+        <!-- Lazo derecho -->
+        <path class="ribbon"
+          d="M250 425
+             Q290 390 320 410
+             Q335 440 255 433"/>
 
- </svg>
- </div>
+        <!-- Colas del lazo -->
+        <path class="ribbon"
+          d="M245 433 Q220 475 205 465"/>
 
- <div class="falling" aria-hidden="true">
-  <span>✿</span>
-  <span>✿</span>
-  <span>✿</span>
-  <span>✿</span>
-  <span>✿</span>
- </div>
+        <path class="ribbon"
+          d="M255 433 Q280 475 295 465"/>
+
+        <!-- Centro -->
+        <circle class="ribbon-center"
+          cx="250" cy="430" r="9"/>
+
+      </g>
+
+      <!-- NUEVE VIOLETAS -->
+
+      <g class="flower"
+         style="animation-delay:1s"
+         transform="translate(85 125) scale(1.05)">
+        <use href="#violet"/>
+      </g>
+
+      <g class="flower"
+         style="animation-delay:1.3s"
+         transform="translate(145 85) scale(.95)">
+        <use href="#violet"/>
+      </g>
+
+      <g class="flower"
+         style="animation-delay:1.6s"
+         transform="translate(215 65) scale(1.15)">
+        <use href="#violet"/>
+      </g>
+
+      <g class="flower"
+         style="animation-delay:1.9s"
+         transform="translate(285 90) scale(1)">
+        <use href="#violet"/>
+      </g>
+
+      <g class="flower"
+         style="animation-delay:2.2s"
+         transform="translate(385 140) scale(1.05)">
+        <use href="#violet"/>
+      </g>
+
+      <g class="flower"
+         style="animation-delay:2.5s"
+         transform="translate(65 220) scale(.85)">
+        <use href="#violet"/>
+      </g>
+
+      <g class="flower"
+         style="animation-delay:2.8s"
+         transform="translate(435 220) scale(.85)">
+        <use href="#violet"/>
+      </g>
+
+      <g class="flower"
+         style="animation-delay:3.1s"
+         transform="translate(140 210) scale(.9)">
+        <use href="#violet"/>
+      </g>
+
+      <g class="flower"
+         style="animation-delay:3.4s"
+         transform="translate(360 210) scale(.9)">
+        <use href="#violet"/>
+      </g>
+
+    </svg>
+  </div>
+
+  <!-- Pétalos flotantes -->
+  <div class="falling" aria-hidden="true">
+    <span>✿</span>
+    <span>✿</span>
+    <span>✿</span>
+    <span>✿</span>
+    <span>✿</span>
+  </div>
 
 </main>
 
 <script>
-document.getElementById('reveal').addEventListener('click',()=>{
- document.getElementById('scene').classList.add('opened');
-},{once:true});
+document.getElementById("reveal").addEventListener("click", function() {
+  document.getElementById("scene").classList.add("opened");
+}, { once: true });
 </script>
 
 </body>
